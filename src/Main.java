@@ -15,7 +15,6 @@ public class Main {
     public static ArrayList<Car> listOfCars = new ArrayList<>();
     public static ArrayList<Motorcycle> listOfMotorcycles = new ArrayList<>();
     public static ArrayList<Truck> listOfTrucks = new ArrayList<>();
-    public static List<Object> winner = new ArrayList <>();
 
     public static void main(String[] args) {
 
@@ -46,7 +45,7 @@ public class Main {
         for (int i = 0; i < 10; i++) {
 
             // Car section
-            winner.add(listOfCars.get(i));
+
             name = listOfCars.get(i).getName();
             distanceTraveled = listOfCars.get(i).getDistanceTraveled();
             avgSpeed = (listOfCars.get(i).getDistanceTraveled() / 50 );
@@ -56,7 +55,7 @@ public class Main {
                                 avgSpeed + " km/h.");
 
             // Motorcycle section
-            winner.add(listOfMotorcycles.get(i));
+
             name = listOfMotorcycles.get(i).getName();
             distanceTraveled = listOfMotorcycles.get(i).getDistanceTraveled();
             avgSpeed = (listOfMotorcycles.get(i).getDistanceTraveled() / 50 );
@@ -66,7 +65,7 @@ public class Main {
                     avgSpeed + " km/h.");
 
             // Truck section
-            winner.add(listOfTrucks.get(i));
+
             truckName = listOfTrucks.get(i).getName();
             distanceTraveled = listOfTrucks.get(i).getDistanceTraveled();
             avgSpeed = (listOfTrucks.get(i).getDistanceTraveled() / 50 );
