@@ -12,6 +12,11 @@ public class Truck extends Main {
     private int name;
     private int speed;
     private int distanceTraveled;
+    private static boolean timeForRest;
+
+    {
+        timeForRest = false;
+    }
 
     public static ArrayList<Integer> driverNames;
 
@@ -53,29 +58,53 @@ public class Truck extends Main {
         }
     }
 
-    public static void moveForAnHour(boolean isRaining) {
+    public static void moveForAnHour() {
+        countingTruckHours++;
         int distance;
-        if (isRaining) {
+        int chanceOfStop;
+
+        if (timeForRest) {
             System.out.println("");
-            System.out.println("It is raining at the moment!");
+            System.out.println("HOUR " + countingTruckHours + " for Trucks");
+            System.out.println("OMG!! It is resting time for the trucks!");
             System.out.println("");
-            for (Truck myTruck : Main.listOfTrucks) {
-                myTruck.setSpeed(Main.randInt(50, 95));
-                System.out.println("The current speed for " + myTruck.getName() + " is " + myTruck.getSpeed());
+            for (Truck myTruck: Main.listOfTrucks) {
+                myTruck.setSpeed(0);
+                System.out.println("The average speed for " + myTruck.getName() + " is " + myTruck.getSpeed());
                 distance = myTruck.getDistanceTraveled() + myTruck.getSpeed();
                 myTruck.setDistanceTraveled(distance);
                 System.out.println("And so far it's distance is: " + distance + " km.");
             }
+            timeForRest = false;
+
         } else {
-            System.out.println("");
-            System.out.println("The weather is LUCKY sunny right now!");
-            System.out.println("");
-            for (Truck myTruck : Main.listOfTrucks) {
-                myTruck.setSpeed(100);
-                System.out.println("The current speed for " + myTruck.getName() + " is " + myTruck.getSpeed());
-                distance = myTruck.getDistanceTraveled() + myTruck.getSpeed();
-                myTruck.setDistanceTraveled(distance);
-                System.out.println("And so far it's distance is: " + distance + " km.");
+            chanceOfStop = Main.randInt(1, 100);
+            if (chanceOfStop < 6) {
+                System.out.println("");
+                System.out.println("HOUR " + countingTruckHours + " for Trucks");
+                System.out.println("OMG!! It is resting time for the trucks!");
+                System.out.println("");
+                for (Truck myTruck: Main.listOfTrucks) {
+                    myTruck.setSpeed(0);
+                    System.out.println("The average speed for " + myTruck.getName() + " is " + myTruck.getSpeed());
+                    distance = myTruck.getDistanceTraveled() + myTruck.getSpeed();
+                    myTruck.setDistanceTraveled(distance);
+                    System.out.println("And so far it's distance is: " + distance + " km.");
+                }
+                timeForRest = true;
+
+            } else {
+                System.out.println("");
+                System.out.println("HOUR " + countingTruckHours + " for Trucks");
+                System.out.println("Who cares about the weather?");
+                System.out.println("");
+                for (Truck myTruck: Main.listOfTrucks) {
+                    myTruck.setSpeed(100);
+                    System.out.println("The average speed for " + myTruck.getName() + " is " + myTruck.getSpeed());
+                    distance = myTruck.getDistanceTraveled() + myTruck.getSpeed();
+                    myTruck.setDistanceTraveled(distance);
+                    System.out.println("And so far it's distance is: " + distance + " km.");
+                }
             }
         }
     }

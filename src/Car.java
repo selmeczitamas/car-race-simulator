@@ -82,25 +82,28 @@ public class Car extends Main {
     }
 
     public static void moveForAnHour(boolean isRaining) {
+        countingCarHours++;
         int distance;
         if (isRaining) {
             System.out.println("");
+            System.out.println("HOUR " + countingCarHours + " for the Cars");
             System.out.println("It is raining at the moment!");
             System.out.println("");
             for (Car myCar: listOfCars) {
                 myCar.setSpeedLimit(70);
-                System.out.println("The current speed for " + myCar.getName() + " is " + myCar.getNormalSpeed());
+                System.out.println("The average speed for " + myCar.getName() + " is " + myCar.getNormalSpeed());
                 distance = myCar.distanceTraveled + myCar.normalSpeed;
                 myCar.setDistanceTraveled(distance);
                 System.out.println("And so far it's distance is: " + distance + " km.");
             }
         } else {
             System.out.println("");
+            System.out.println("HOUR " + countingCarHours + " for the Cars");
             System.out.println("The weather is LUCKY sunny right now!");
             System.out.println("");
             for (Car myCar: listOfCars) {
                 myCar.setNormalSpeed(Main.randInt(80, 110));
-                System.out.println("The current speed for " + myCar.getName() + " is " + myCar.getNormalSpeed());
+                System.out.println("The average speed for " + myCar.getName() + " is " + myCar.getNormalSpeed());
                 distance = myCar.distanceTraveled + myCar.normalSpeed;
                 myCar.setDistanceTraveled(distance);
                 System.out.println("And so far it's distance is: " + distance + " km.");

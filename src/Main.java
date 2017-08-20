@@ -15,6 +15,15 @@ public class Main {
     public static ArrayList<Car> listOfCars = new ArrayList<>();
     public static ArrayList<Motorcycle> listOfMotorcycles = new ArrayList<>();
     public static ArrayList<Truck> listOfTrucks = new ArrayList<>();
+    public static int countingCarHours;
+    public static int countingMotorHours;
+    public static int countingTruckHours;
+
+    {
+        countingCarHours = 0;
+        countingMotorHours = 0;
+        countingTruckHours = 0;
+    }
 
     public static void main(String[] args) {
 
@@ -30,52 +39,15 @@ public class Main {
             isRaining = isRaining();
             Car.moveForAnHour(isRaining);
             Motorcycle.moveForAnHour(isRaining);
-            Truck.moveForAnHour(isRaining);
+            Truck.moveForAnHour();
         }
     }
 
 
     public static void printRaceResults() {
-        String name;
-        int truckName;
-        int distanceTraveled;
-        int avgSpeed;
-
-        System.out.println("");
-        for (int i = 0; i < 10; i++) {
-
-            // Car section
-
-            name = listOfCars.get(i).getName();
-            distanceTraveled = listOfCars.get(i).getDistanceTraveled();
-            avgSpeed = (listOfCars.get(i).getDistanceTraveled() / 50 );
-
-            System.out.println(name + " belongs to the " + listOfCars.get(i).getClass() +
-                               " and he/she traveled " + distanceTraveled + " km with an average speed of " +
-                                avgSpeed + " km/h.");
-
-            // Motorcycle section
-
-            name = listOfMotorcycles.get(i).getName();
-            distanceTraveled = listOfMotorcycles.get(i).getDistanceTraveled();
-            avgSpeed = (listOfMotorcycles.get(i).getDistanceTraveled() / 50 );
-
-            System.out.println(name + " belongs to the " + listOfMotorcycles.get(i).getClass() +
-                    " and he/she traveled " + distanceTraveled + " km with an average speed of " +
-                    avgSpeed + " km/h.");
-
-            // Truck section
-
-            truckName = listOfTrucks.get(i).getName();
-            distanceTraveled = listOfTrucks.get(i).getDistanceTraveled();
-            avgSpeed = (listOfTrucks.get(i).getDistanceTraveled() / 50 );
-
-            System.out.println(truckName + " belongs to the " + listOfTrucks.get(i).getClass() +
-                    " and he/she traveled " + distanceTraveled + " km with an average speed of " +
-                    avgSpeed + " km/h.");
-
-
-        }
+        printCarResult();
+        printMotorcycleResult();
+        printTruckResult();
     }
 
 
@@ -100,21 +72,78 @@ public class Main {
 
         Truck.createNames();
         String motorName;
+        int truckName;
 
         for(int i = 0; i < 10; i++) {
             Car myCar = new Car();
             listOfCars.add(myCar);
-//            System.out.println(myCar.getName() + "'s speed is " + myCar.getNormalSpeed() + " km/s");
 
             motorName = "Motorcycle " + (i + 1);
             Motorcycle myMotorcycle = new Motorcycle(motorName);
             listOfMotorcycles.add(myMotorcycle);
-//            System.out.println(myMotorcycle.getName() + "'s speed is " + myMotorcycle.getSpeed() + " km/s");
 
-            int truckName = Truck.driverNames.get(i);
+            truckName = Truck.driverNames.get(i);
             Truck myTruck = new Truck(truckName);
             listOfTrucks.add(myTruck);
 
+        }
+    }
+
+    public static void printCarResult() {
+        String name;
+        int distanceTraveled;
+        int avgSpeed;
+        System.out.println("");
+        System.out.println("-------------------------------");
+        System.out.println("Final results of the Car racers");
+        System.out.println("-------------------------------");
+        System.out.println("");
+
+        for (Car myCar: listOfCars) {
+            name = myCar.getName();
+            distanceTraveled = myCar.getDistanceTraveled();
+            avgSpeed = myCar.getDistanceTraveled() / 50;
+            System.out.println(name + " belongs to the " + myCar.getClass() +
+                    " and the driver traveled " + distanceTraveled + " km with an average speed of " +
+                    avgSpeed + " km/h.");
+        }
+    }
+
+    public static void printMotorcycleResult() {
+        String name;
+        int distanceTraveled;
+        int avgSpeed;
+        System.out.println("");
+        System.out.println("--------------------------------------");
+        System.out.println("Final results of the Motorcycle racers");
+        System.out.println("--------------------------------------");
+        System.out.println("");
+        for (Motorcycle myMotor: listOfMotorcycles) {
+            name = myMotor.getName();
+            distanceTraveled = myMotor.getDistanceTraveled();
+            avgSpeed = myMotor.getDistanceTraveled() / 50;
+            System.out.println(name + " belongs to the " + myMotor.getClass() +
+                    " and the driver traveled " + distanceTraveled + " km with an average speed of " +
+                    avgSpeed + " km/h.");
+        }
+    }
+
+    public static void printTruckResult() {
+        int name;
+        int distanceTraveled;
+        int avgSpeed;
+        System.out.println("");
+        System.out.println("---------------------------------");
+        System.out.println("Final results of the Truck racers");
+        System.out.println("---------------------------------");
+        System.out.println("");
+        for (Truck myTruck: listOfTrucks) {
+            name = myTruck.getName();
+            distanceTraveled = myTruck.getDistanceTraveled();
+            avgSpeed = myTruck.getDistanceTraveled() / 50;
+            System.out.println(name + " belongs to the " + myTruck.getClass() +
+                    " and the driver traveled " + distanceTraveled + " km with an average speed of " +
+                    avgSpeed + " km/h.");
         }
     }
 }

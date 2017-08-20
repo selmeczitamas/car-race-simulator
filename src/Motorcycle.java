@@ -43,25 +43,28 @@ public class Motorcycle extends Main {
     }
 
     public static void moveForAnHour(boolean isRaining) {
+        countingMotorHours++;
         int distance;
         if (isRaining) {
             System.out.println("");
+            System.out.println("HOUR " + countingMotorHours + " for Motorcycles");
             System.out.println("It is raining at the moment!");
             System.out.println("");
             for (Motorcycle myMotor: Main.listOfMotorcycles) {
                 myMotor.setSpeed(Main.randInt(50, 95));
-                System.out.println("The current speed for " + myMotor.getName() + " is " + myMotor.getSpeed());
+                System.out.println("The average speed for " + myMotor.getName() + " is " + myMotor.getSpeed());
                 distance = myMotor.getDistanceTraveled() + myMotor.getSpeed();
                 myMotor.setDistanceTraveled(distance);
                 System.out.println("And so far it's distance is: " + distance + " km.");
             }
         } else {
             System.out.println("");
+            System.out.println("HOUR " + countingMotorHours + " for Motorcycles");
             System.out.println("The weather is LUCKY sunny right now!");
             System.out.println("");
             for (Motorcycle myMotor: Main.listOfMotorcycles) {
                 myMotor.setSpeed(100);
-                System.out.println("The current speed for " + myMotor.getName() + " is " + myMotor.getSpeed());
+                System.out.println("The average speed for " + myMotor.getName() + " is " + myMotor.getSpeed());
                 distance = myMotor.getDistanceTraveled() + myMotor.getSpeed();
                 myMotor.setDistanceTraveled(distance);
                 System.out.println("And so far it's distance is: " + distance + " km.");
